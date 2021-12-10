@@ -93,8 +93,8 @@ for (let i = 0; i < arrayPosts.length; i++) {
     `
     containerElement.innerHTML += template
 
-    const button = document.querySelector('.like-button')
-    // console.log(button);
+    const button = document.querySelectorAll('.like-button')
+    console.log(button);
     
     let like = obj.numeroLikes
     // console.log(like);
@@ -102,9 +102,14 @@ for (let i = 0; i < arrayPosts.length; i++) {
 
 
     // se clicco sul pulsante aggiungi +1 a oggetto numeroLikes
-    button.addEventListener('click',function(event){
+
+    button.addEventListener
+
+    button.addEventListener('click', function(event){
       event.preventDefault()
-   
+        // alert('funziona')
+        console.log('prova');
+     
 
 
     })
