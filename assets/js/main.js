@@ -14,7 +14,7 @@ BONUS
 //  Creiamo il nostro array di oggetti che rappresentano ciascun post. Ogni post dovrà avere le informazioni necessarie per stampare la relativa card: nome autore, foto profilo, data in formato americano, testo del post, immagine (non tutti i post devono avere una immagine), numero di likes.
 
 
-const arrayObject = [
+const arrayPosts = [
     {
         autore: "Marco Monni",
         fotoProfilo: "https://i.picsum.photos/id/198/300/300.jpg?hmac=LXuu3_Asv2vtXvHU-vYgD-_pfaYXq6l14xAFALdrlco",
@@ -48,3 +48,48 @@ const arrayObject = [
         numeroLikes: "1",
     }
 ]
+
+// Selezionare il contenitore
+const containerElement = document.getElementById('container')
+// console.log(containerElement);
+
+
+
+
+// creare un ciclo per inserire l'elemento all'interno dell'html
+for (let i = 0; i < arrayPosts.length; i++) {
+    let obj = arrayPosts[i];
+    const template = `
+    <div class="post">
+            <div class="post__header">
+                <div class="post-meta">                    
+                    <div class="post-meta__icon">
+                        <img class="profile-pic" src="${obj.fotoProfilo}">                    
+                    </div>
+                    <div class="post-meta__data">
+                        <div class="post-meta__author">${obj.autore}</div>
+                        <div class="post-meta__time">${obj.data}</div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="post__text">${obj.testo}</div>
+            <div class="post__image">
+                <img src="${obj.immagine}" alt="">
+            </div>
+            <div class="post__footer">
+                <div class="likes js-likes">
+                    <div class="likes__cta">
+                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                            <span class="like-button__label">Mi Piace</span>
+                        </a>
+                    </div>
+                    <div class="likes__counter">
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${obj.numeroLikes}</b> persone
+                    </div>
+                </div> 
+            </div>            
+        </div>
+    `
+    containerElement.innerHTML += template
+}
