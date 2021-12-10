@@ -102,12 +102,9 @@ for (let i = 0; i < arrayPosts.length; i++) {
 
 
     // se clicco sul pulsante aggiungi +1 a oggetto numeroLikes
-    button.addEventListener('click',function(){
-     
-        for (let i = 0; i < array.length; i++) {
-            const element = array[i];
-            
-        }
+    button.addEventListener('click',function(event){
+      event.preventDefault()
+   
 
 
     })
