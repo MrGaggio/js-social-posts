@@ -21,7 +21,7 @@ const arrayPosts = [
         data: "15/10/2021",
         testo: "che talvolta è praticamente impossibile valutare sulla scorta dei dati normalmente disponibili.",
         immagine: "https://i.picsum.photos/id/444/600/300.jpg?hmac=rq8gLh76pmVX0xbAVxdx0T5wCEshX0z25eLXbctWCWQ",
-        numeroLikes: "10",
+        numeroLikes: 10,
     },
     {
         autore: "Nicola Piras",
@@ -29,7 +29,7 @@ const arrayPosts = [
         data: "10/09/2020",
         testo: "non di rado riconosciuti come uno dei fattori di cui occorre tener conto in ogni sviluppo coerenete della teoria.",
         immagine: "https://i.picsum.photos/id/84/600/300.jpg?hmac=yiNgm5FHr7WPip0fiKXecbodGcKX3Y1zq69b6sUHiyA",
-        numeroLikes: "5",
+        numeroLikes: 5,
     },
     {
         autore: "Maurizio Esciana",
@@ -37,7 +37,7 @@ const arrayPosts = [
         data: "04/04/2021",
         testo: "ormai componenti di primaria importanza nella complessa fenomenologia dell'astrofisica.",
         immagine: "https://i.picsum.photos/id/1061/600/300.jpg?hmac=1hWHpiKeEXoZ5lc1THZWXsO2MNA6kzyNsSn5fZMUJY8",
-        numeroLikes: "3",
+        numeroLikes: 3,
     },
     {
         autore: "Manfredi Urciuoli",
@@ -45,7 +45,7 @@ const arrayPosts = [
         data: "16/05/2021",
         testo: "e una nuova, individuane dei meccanismi di produzione di energia non termica",
         immagine: "https://i.picsum.photos/id/701/600/300.jpg?hmac=MvZv1WvD_k1q2_xIUIBjwREjlq3XK8iMirkKaqLh8zg",
-        numeroLikes: "1",
+        numeroLikes: 1,
     }
 ]
 
@@ -92,4 +92,30 @@ for (let i = 0; i < arrayPosts.length; i++) {
         </div>
     `
     containerElement.innerHTML += template
+
+    const button = document.querySelector('.like-button')
+    // console.log(button);
+    
+    let like = obj.numeroLikes
+    // console.log(like);
+
+
+
+    // se clicco sul pulsante aggiungi +1 a oggetto numeroLikes
+    button.addEventListener('click',function(){
+     
+        for (let i = 0; i < array.length; i++) {
+            const element = array[i];
+            
+        }
+
+
+    })
+
+    
 }
+
+// - Rendiamo il tasto “Mi Piace” cliccabile con incremento del counter dei likes.
+
+
+
