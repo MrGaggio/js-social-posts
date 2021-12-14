@@ -15,7 +15,8 @@ BONUS
 
 
 const arrayPosts = [
-    {
+    {   
+        id: "1",
         autore: "Marco Monni",
         fotoProfilo: "https://i.picsum.photos/id/198/300/300.jpg?hmac=LXuu3_Asv2vtXvHU-vYgD-_pfaYXq6l14xAFALdrlco",
         data: "15/10/2021",
@@ -23,7 +24,8 @@ const arrayPosts = [
         immagine: "https://i.picsum.photos/id/444/600/300.jpg?hmac=rq8gLh76pmVX0xbAVxdx0T5wCEshX0z25eLXbctWCWQ",
         numeroLikes: 10,
     },
-    {
+    {   
+        id: "2",
         autore: "Nicola Piras",
         fotoProfilo: "https://i.picsum.photos/id/525/300/300.jpg?hmac=bZJEC1GF1U28l4pBtKfMRdcHe_Io4u_bNEYtdpdTzL0",
         data: "10/09/2020",
@@ -31,7 +33,8 @@ const arrayPosts = [
         immagine: "https://i.picsum.photos/id/84/600/300.jpg?hmac=yiNgm5FHr7WPip0fiKXecbodGcKX3Y1zq69b6sUHiyA",
         numeroLikes: 5,
     },
-    {
+    {   
+        id: "3",
         autore: "Maurizio Esciana",
         fotoProfilo: "https://i.picsum.photos/id/411/300/300.jpg?hmac=vLP_Aguvnx9Fyhx1QKMZ3YaeKTDaxQTzPRbSgtZkrSo",
         data: "04/04/2021",
@@ -39,7 +42,8 @@ const arrayPosts = [
         immagine: "https://i.picsum.photos/id/1061/600/300.jpg?hmac=1hWHpiKeEXoZ5lc1THZWXsO2MNA6kzyNsSn5fZMUJY8",
         numeroLikes: 3,
     },
-    {
+    {   
+        id: "4",
         autore: "Manfredi Urciuoli",
         fotoProfilo: "https://i.picsum.photos/id/343/300/300.jpg?hmac=U-DyYS8TDOO9wwhRiPp287g4Iau9PcYwdXb9JjdsU6w",
         data: "16/05/2021",
@@ -58,34 +62,34 @@ const containerElement = document.getElementById('container')
 
 // creare un ciclo per inserire l'elemento all'interno dell'html
 for (let i = 0; i < arrayPosts.length; i++) {
-    let obj = arrayPosts[i];
+    let post = arrayPosts[i];
     const template = `
     <div class="post">
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src="${obj.fotoProfilo}">                    
+                        <img class="profile-pic" src="${post.fotoProfilo}">                    
                     </div>
                     <div class="post-meta__data">
-                        <div class="post-meta__author">${obj.autore}</div>
-                        <div class="post-meta__time">${obj.data}</div>
+                        <div class="post-meta__author">${post.autore}</div>
+                        <div class="post-meta__time">${post.data}</div>
                     </div>                    
                 </div>
             </div>
-            <div class="post__text">${obj.testo}</div>
+            <div class="post__text">${post.testo}</div>
             <div class="post__image">
-                <img src="${obj.immagine}" alt="">
+                <img src="${post.immagine}" alt="">
             </div>
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button " href="#" data-postid="${post.id}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${obj.numeroLikes}</b> persone
+                        Piace a <b id="like-counter-${post.id}" class="js-likes-counter">${post.numeroLikes}</b> persone
                     </div>
                 </div> 
             </div>            
@@ -93,31 +97,31 @@ for (let i = 0; i < arrayPosts.length; i++) {
     `
     containerElement.innerHTML += template
 
-    const button = document.querySelectorAll('.like-button')
-    console.log(button);
     
-    let like = obj.numeroLikes
-    // console.log(like);
-
-
-
-    // se clicco sul pulsante aggiungi +1 a oggetto numeroLikes
-
-    button.addEventListener
-
-    button.addEventListener('click', function(event){
-      event.preventDefault()
-        // alert('funziona')
-        console.log('prova');
-     
-
-
-    })
+    
+    let like = post.numeroLikes
 
     
 }
 
-// - Rendiamo il tasto “Mi Piace” cliccabile con incremento del counter dei likes.
 
 
-
+// seleziono tutti i bottoni
+const buttons =  document.querySelectorAll('.like-button')
+for (let i = 0; i < buttons.length; i++) {
+    const button = buttons[i]
+    button.addEventListener('click', function (event) {
+        // previene il fatto che risalga al primo post se clicco gli altri
+        event.preventDefault()
+        console.log("click");
+        // id parte da 1 ma il cliclo da 0, quindi +1
+        const id = i + 1
+        // selezione del contenitore dei like
+        const containerLike = document.getElementById('like-counter-' + id )
+        // aggiunge +1 ai like
+        arrayPosts[i].numeroLikes += 1
+        // inserisce il +1 nel contenitore dei like
+        containerLike.innerHTML = arrayPosts[i].numeroLikes
+    })
+    
+}
