@@ -113,15 +113,26 @@ for (let i = 0; i < buttons.length; i++) {
     button.addEventListener('click', function (event) {
         // previene il fatto che risalga al primo post se clicco gli altri
         event.preventDefault()
-        console.log("click");
-        // id parte da 1 ma il cliclo da 0, quindi +1
         const id = i + 1
         // selezione del contenitore dei like
         const containerLike = document.getElementById('like-counter-' + id )
+        if (button.classList.contains('like-button--liked')) {
+            button.classList.remove('like-button--liked')
+            arrayPosts[i].numeroLikes -= 1
+            // inserisce il +1 nel contenitore dei like
+            containerLike.innerHTML = arrayPosts[i].numeroLikes
+        }else {
+        button.classList.add('like-button--liked')
+        // id parte da 1 ma il cliclo da 0, quindi +1
+
         // aggiunge +1 ai like
         arrayPosts[i].numeroLikes += 1
         // inserisce il +1 nel contenitore dei like
         containerLike.innerHTML = arrayPosts[i].numeroLikes
+        }
+
+
+
     })
     
 }
